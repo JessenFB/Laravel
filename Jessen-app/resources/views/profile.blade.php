@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>Kematian</h1>
-    <p>Ini Adalah Halaman Kematain Seseorang</p>
+    <p>Ini Adalah Halaman Kematian Seseorang</p>
 </body>
 </html>

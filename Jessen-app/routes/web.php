@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FakultasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,4 @@ Route::get('About',function(){
 Route::get('profile',function(){
     return view('profile');
 });
+Route::resource('fakultas',FakultasController::class);
