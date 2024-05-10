@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fakultas;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
-class FakultasController extends Controller
+class ProdiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class FakultasController extends Controller
      */
     public function index()
     {
-        $fakultas = Fakultas::all();
-        return view('fakultas.index') ->with('fakultas',$fakultas);
+        $prodi = Prodi::all();
+        return view('prodi.index') ->with('prodi',$prodi);
     }
 
     /**
@@ -25,7 +25,7 @@ class FakultasController extends Controller
      */
     public function create()
     {
-        return view('fakultas.create');
+        //
     }
 
     /**
@@ -42,10 +42,10 @@ class FakultasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Fakultas  $fakultas
+     * @param  \App\Models\Prodi  $prodi
      * @return \Illuminate\Http\Response
      */
-    public function show(Fakultas $fakultas)
+    public function show(Prodi $prodi)
     {
         //
     }
@@ -53,10 +53,10 @@ class FakultasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Fakultas  $fakultas
+     * @param  \App\Models\Prodi  $prodi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fakultas $fakultas)
+    public function edit(Prodi $prodi)
     {
         //
     }
@@ -65,10 +65,10 @@ class FakultasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Fakultas  $fakultas
+     * @param  \App\Models\Prodi  $prodi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fakultas $fakultas)
+    public function update(Request $request, Prodi $prodi)
     {
         //
     }
@@ -76,10 +76,10 @@ class FakultasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Fakultas  $fakultas
+     * @param  \App\Models\Prodi  $prodi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fakultas $fakultas)
+    public function destroy(Prodi $prodi)
     {
         //
     }
