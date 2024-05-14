@@ -8,6 +8,6 @@
     <p>Ini Adalah Halaman Daftar Fakultas MDP</p>
 
     @foreach ($fakultas as $item)
-    {{$item['nama']}} {{$item['singkatan'] }} 
-    @endforeach
+    {{  $item['nama'] }} {{ $item['singkatan'] }} <br>
+@endforeach
     @endsection

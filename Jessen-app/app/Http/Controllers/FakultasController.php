@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fakultas;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Unique;
 
 class FakultasController extends Controller
 {
@@ -36,7 +37,15 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $val = $request->validate([
+            'nama' => 'required|unique:fakultas',
+            'singkatan'=>'required'
+        ]);
+
+        Fakultas::create($val);
+
+        return redirect()->route('fakultas.index');
     }
 
     /**

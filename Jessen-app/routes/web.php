@@ -25,4 +25,4 @@ Route::get('profile',function(){
     return view('profile');
 });
 Route::resource('fakultas',FakultasController::class);
-Route::resource('prodi',ProdiController::class);
+Route::resource('prodi', ProdiController::class);

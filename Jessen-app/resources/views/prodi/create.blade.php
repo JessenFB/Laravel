@@ -5,7 +5,7 @@
     @section('content')
     <h2>Tambah Fakultas</h2>
     <p>ini Halaman Tambah Fakultas MDP</p>
-    <form action="{{route('fakultas.store')}}" method="post">
+    <form action="{{route('prodi.store')}}" method="post">
     @csrf
     Nama Fakultas
     <input type="text" name="nama" id="" value="{{old('nama')}}">
@@ -13,9 +13,13 @@
             {{$message}}
     @enderror
     <br>
-    Singkatan
-    <input type="text" name="singkatan" id="" value="{{old('singkatan')}}">
-    @error('singkatan')
+    Fakultas
+    <select name="fakultas_id" id="">
+        @foreach ($fakultas as $item)
+        <option value="{{$item["id"]}}">{{$item["nama"]}}</option>
+    @endforeach
+    </select>
+    @error('fakultas id')
             {{$message}}
     @enderror
     <br>
