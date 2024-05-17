@@ -1,10 +1,38 @@
 @extends('layout.main')
 @section('title', 'Daftar Prodi')
 @section('content')
-    <h2>Daftar Program Studi</h2>
-    <p>Ini halaman daftar Program Studi</p>
 
-    @foreach ($prodi as $item)
-        {{  $item['nama'] }} {{  $item['fakultas'] ['nama'] }}  {{  $item['fakultas'] ['singkatan'] }} <br>
-    @endforeach
-@endsection
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Daftar Program Studi</h4>
+            <p class="card-description">
+              List Data Program Studi
+            </p>
+            <a href="{{url('prodi/create')}}" class="btn btn-dark btn-rounded btn-fw">Tambah</a>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Nama Program Studi</th>
+                    <th>Nama Fakultas</th>
+                    <th>Singkatan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 @foreach ($prodi as $item)
+                 <tr>
+        <td>{{  $item['nama'] }}</td> 
+        <td>{{  $item['fakultas'] ['nama'] }}</td>  
+        <td>{{  $item['fakultas'] ['singkatan'] }} <br></td>
+    </tr>
+    @endforeach   
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endsection
