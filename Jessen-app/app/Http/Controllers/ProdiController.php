@@ -37,7 +37,7 @@ class ProdiController extends Controller
         ]);
 
         Prodi::create($val);
-        return redirect()->route('prodi.index');
+        return redirect()->route('prodi.index')-> with('success',$val['nama'].'berhasil Disimpan');
     }
 
     /**

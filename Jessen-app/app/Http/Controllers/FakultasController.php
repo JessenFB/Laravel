@@ -44,9 +44,9 @@ class FakultasController extends Controller
         ]);
 
         Fakultas::create($val);
-
-        return redirect()->route('fakultas.index');
+        return redirect()->route('fakultas.index')-> with('success',$val['nama'].'berhasil Disimpan');
     }
+
 
     /**
      * Display the specified resource.

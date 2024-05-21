@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>@yield('title')</title>
   <!-- base:css -->
-  <link rel="stylesheet" href="{{url('vendors/mdi/css/materialdesignicons.min.css')}}>
+  <link rel="stylesheet" href="{{url('vendors/mdi/css/materialdesignicons.min.css')}}">
   <link rel="stylesheet" href="{{url('vendors/css/vendor.bundle.base.css')}}">
   <!-- endinject -->
   <!-- plugin css for this page -->
@@ -35,7 +35,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{url('fakultas')}}">
-              <i class="mdi mdi-star menu-icon"></i>
+              <i class="mdi mdi-archive menu-icon"></i>
               <span class="menu-title">Fakultas</span>
             </a>
           </li>
@@ -135,7 +135,7 @@
             <a class="navbar-brand brand-logo" href="index.html"><img src="{{url('images/logo.svg')}}" alt="logo"/></a>
             <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{url('images/logo-mini.svg')}}" alt="logo"/></a>
           </div>
-          <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome back, Brandon Haynes</h4>
+          <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome back, Jessen Fallik Bemi</h4>
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item">
               <h4 class="mb-0 font-weight-bold d-none d-xl-block">Mar 12, 2019 - Apr 10, 2019</h4>
@@ -250,7 +250,7 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                 <img src="{{url('images/faces/face5.jpg')}}" alt="profile"/>
-                <span class="nav-profile-name">Eleanor Richardson</span>
+                <span class="nav-profile-name">Jessen Fallik Bemi</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item">
@@ -311,7 +311,7 @@
   <script src="{{url('vendors/js/vendor.bundle.base.js')}}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
-  <script src="{{('vendors/chart.js/Chart.min.js')}}"></script>
+  <script src="{{url('vendors/chart.js/Chart.min.js')}}"></script>
   <!-- End plugin js for this page-->
   <!-- inject:js -->
   <script src="{{url('js/off-canvas.js')}}"></script>
