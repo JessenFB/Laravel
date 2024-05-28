@@ -8,25 +8,21 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id'); //UUID (unique identifier)
             $table->primary('id');
-            $table->char('NPM',10);
-            $table->string('nama',45);
-            $table->string('tempat_lahir');
+            $table->char('npm', 10);
+            $table->string('nama', 45);
+            $table->string('tempat_lahir', 45);
             $table->date('tanggal_lahir');
             $table->string('alamat');
             $table->uuid('kota_id');
-            $table->foreign('kota_id')->references('id')->on
-            ('kotas');
+            $table->foreign('kota_id')->references('id')->on('kotas');
             $table->uuid('prodi_id');
-            $table->foreign('prodi_id')->references('id')->on
-            ('prodis');
+            $table->foreign('prodi_id')->references('id')->on('prodis');
             $table->string('url_foto');
             $table->timestamps();
         });
@@ -34,10 +30,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('mahasiswas');
     }

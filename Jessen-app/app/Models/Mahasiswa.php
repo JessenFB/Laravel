@@ -10,13 +10,13 @@ class Mahasiswa extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $fillable = ['npm','nama','tempat_lahir','tanggal_lahir','alamat','kota_id','prodi_id'
-    ,'url_foto'];
-    
-    public function kota(){
-        return $this->belongsTo(Kota::class,'kota_id');
+    protected $fillable = ['npm', 'nama', 'tempat_lahir', 'tanggal_lahir', 'alamat', 'kota_id', 'prodi_id', 'url_foto'];
+
+    public function kota() {
+        return $this->belongsTo(Kota::class, 'kota_id');
     }
-    public function prodi(){
-        return $this->belongsTo(Prodi::class,'prodi_id');
+
+    public function prodi() {
+        return $this->belongsTo(Prodi::class, 'prodi_id');
     }
 }

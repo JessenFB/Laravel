@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kota;
 use App\Models\Mahasiswa;
+use App\Models\Kota;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
 
@@ -11,66 +11,58 @@ class MahasiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $mahasiswa = Mahasiswa::all();
-        return view('mahasiswa.index')->with('mahasiwa',$mahasiswa);
+        return view('mahasiswa.index')->with('mahasiswa', $mahasiswa);
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        $kota = Kota::all();
         $prodi = Prodi::all();
-        return view('mahasiswa.create')->with('prodi', $prodi) ->with('kota',$kota);
+        $kota = Kota::all();
+        return view('mahasiswa.create')->with('kota', $kota)->with('prodi', $prodi);
+
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $val = $request->validate([
             'npm' => 'required|unique:mahasiswas',
-            'nama' => 'required|unique:mahasiswas',
-            'tempat_lahir' => 'required|unique:mahasiswas',
-            'tanggal_lahir' => 'required|unique:mahasiswas',
-            'alamat' => 'required|unique:mahasiswas',
+            'nama' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'alamat' => 'required',
             'kota_id' => 'required',
             'prodi_id' => 'required',
-            'url_foto' => 'required|unique:mahasiswas'
+            'url_foto' => 'required'
         ]);
 
         Mahasiswa::create($val);
-        return redirect()->route('mahasiswa.index')-> with('success',$val['nama'].'berhasil Disimpan');
+        return redirect()->route('mahasiswa.index') ->with('success', $val['nama'].'berhasil disimpan');
+
+
+
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Models\Mahasiswa  $mahasiswa
-     * @return \Illuminate\Http\Response
      */
     public function show(Mahasiswa $mahasiswa)
     {
-        //
+        // dd($mahasiswa);
+        return view('mahasiswa.show')->with('mahasiswa',$mahasiswa);
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Mahasiswa  $mahasiswa
-     * @return \Illuminate\Http\Response
      */
     public function edit(Mahasiswa $mahasiswa)
     {
@@ -79,10 +71,6 @@ class MahasiswaController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mahasiswa  $mahasiswa
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
@@ -91,9 +79,6 @@ class MahasiswaController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Mahasiswa  $mahasiswa
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
