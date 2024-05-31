@@ -6,6 +6,8 @@ use App\Models\Mahasiswa;
 use App\Models\Kota;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Termwind\Components\Dd;
 
 class MahasiswaController extends Controller
 {
@@ -34,7 +36,11 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
+        
+        // dd($request);
+
         $val = $request->validate([
+
             'npm' => 'required|unique:mahasiswas',
             'nama' => 'required',
             'tempat_lahir' => 'required',
@@ -42,8 +48,15 @@ class MahasiswaController extends Controller
             'alamat' => 'required',
             'kota_id' => 'required',
             'prodi_id' => 'required',
-            'url_foto' => 'required'
+            'url_foto' => 'required|file|mimes:png,jpg|max:5000'
         ]);
+
+
+        $ext = $request->url_foto->getClientOriginalExtension();
+        $val['url_foto'] = $request -> npm. "." .$ext;
+
+        // upload file
+        $request->url_foto->move('foto' ,$val['url_foto']);
 
         Mahasiswa::create($val);
         return redirect()->route('mahasiswa.index') ->with('success', $val['nama'].'berhasil disimpan');
@@ -82,6 +95,8 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
-        //
+        // dd($mahasiswa);
+        $mahasiswa->delete(); 
+        return redirect()->route('mahasiswa.index')->with('success','Data Berhasil Dihapus');
     }
 }

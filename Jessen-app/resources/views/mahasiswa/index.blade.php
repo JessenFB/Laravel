@@ -19,6 +19,7 @@
                       <th class="text-center">Nama Mahasiswa</th>
                       <th class="text-center">Kota Lahir</th>
                       <th class="text-center">Prodi</th>
+                      <th class="text-center">Foto</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -28,7 +29,13 @@
                         <td class="text-center">{{ $item['nama'] }}</td>
                         <td class="text-center">{{ $item['kota'] ['nama'] }}</td>
                         <td class="text-center">{{ $item['prodi'] ['nama'] }}</td>
+                        <td class="text-center" ><img src="{{url('foto/'.$item['url_foto'])}}" alt=""></td>
                         <td> <a href="{{route('mahasiswa.show',$item ['id'])}}" class="btn btn-sm btn-dark btn-rounded">Show</a></td>
+                        <td><form action="{{route('mahasiswa.destroy', $item->id)}}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-sm btn-dark btn-rounded">Hapus</button>
+                        </form></td>
                     </tr>
                     @endforeach
                 </tbody>
