@@ -31,7 +31,7 @@
                 </tr>
                 <tr>
                     <td>Foto</td>
-                    <<td ><img  height="1000px" width="200px" src="{{url('foto/'.$mahasiswa['url_foto'])}}" alt=""></td>
+                    <<td ><img  height="700px" width="200px" src="{{url('foto/'.$mahasiswa['url_foto'])}}" alt=""></td>
                 </tr>     
             </table>
         </div>

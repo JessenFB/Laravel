@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mahasiswa;
 use App\Models\Kota;
 use App\Models\Prodi;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Termwind\Components\Dd;
@@ -95,7 +96,7 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
-        // dd($mahasiswa);
+         File::delete('foto/' . $mahasiswa['url_foto']);
         $mahasiswa->delete(); 
         return redirect()->route('mahasiswa.index')->with('success','Data Berhasil Dihapus');
     }

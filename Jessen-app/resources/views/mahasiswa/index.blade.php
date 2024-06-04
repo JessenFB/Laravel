@@ -34,7 +34,8 @@
                         <td><form action="{{route('mahasiswa.destroy', $item->id)}}" method="post">
                         @method('DELETE')
                         @csrf
-                        <button type="submit" class="btn btn-sm btn-dark btn-rounded">Hapus</button>
+                        <button type="submit" class="btn btn-sm btn-dark btn-rounded btn-danger btn-flat show_confirm"
+                          data-toggle ="tooltip" data-nama = "{{$item['nama']}}" title="Hapus">Hapus</button>
                         </form></td>
                     </tr>
                     @endforeach
@@ -46,14 +47,38 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
- @if (session('success'))
-<script>
-   Swal.fire({
+    @if (session('success'))
+    <script>
+      Swal.fire({
      title: "Good job!",
-     text: "You clicked the button!",
+     text: "{{session ('success')}}",
      icon: "success"
    });
    </script>
-
 @endif
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" 
+integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $('.show_confirm').click(function(event) {
+       var form =  $(this).closest("form");
+       var name = $(this).data("nama");
+       event.preventDefault();
+       Swal.fire({
+         title:`Kamu Yakin Inggin Menghapus Data ${name}?`,
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya, Hapus!"
+        }).then((result) => {
+        if (result.isConfirmed) {
+          form.submit();
+       }
+      });
+   });
+
+</script>
+
 @endsection

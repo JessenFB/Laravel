@@ -328,6 +328,30 @@
   <!-- End plugin js for this page -->
   <!-- Custom js for this page-->
   <script src="{{url('js/dashboard.js')}}"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.7.1.js" 
+integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $('.show_confirm').click(function(event) {
+       var form =  $(this).closest("form");
+       var name = $(this).data("nama");
+       event.preventDefault();
+       Swal.fire({
+         title:`Kamu Yakin Inggin Menghapus Data ${name}?`,
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya, Hapus!"
+        }).then((result) => {
+        if (result.isConfirmed) {
+          form.submit();
+       }
+      });
+   });
+
+</script>
   <!-- End custom js for this page-->
 </body>
 

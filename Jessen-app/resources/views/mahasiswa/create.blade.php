@@ -37,7 +37,7 @@
                 @enderror <br>
               </div>
               <div class="form-group">
-                <label for="tempat_lahir">Taempat Lahir</label>
+                <label for="tempat_lahir">Tempat Lahir</label>
                 <input type="text" name="tempat_lahir" id="" value="{{ old('tempat_lahir') }}" class="form-control" >
                 @error('tempat_lahir')
                     <span class="text-danger">{{ $message }}</span>
