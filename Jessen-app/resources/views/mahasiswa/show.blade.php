@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
-            <table border="1">
+            <table ,border="1">
                 <tr>
                     <td>NPM</td>     
                     <td>{{$mahasiswa['npm']}}<br></td>
