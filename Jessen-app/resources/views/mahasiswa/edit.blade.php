@@ -16,7 +16,7 @@
             @method('PUT')
               <div class="form-group">
                 <label for="npm">Nomor Pokok Mahasiswa</label>
-                <input type="text" name="npm" id="" value="{{ old('npm') ? old('npm') : $mahasiswa['npm'] }}" class="form-control" >
+                <input type="text" name="npm" id="" value="{{ old('npm') ? old('npm') : $mahasiswa['npm'] }}" class="form-control" readonly>
                 <div class="form-group">
                 @error('npm')
                     <span class="text-danger">{{ $message }}</span>

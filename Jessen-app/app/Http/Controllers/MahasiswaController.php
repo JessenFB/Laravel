@@ -94,27 +94,34 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
-        
-        $val = $request->validate([
-
-            'npm' => 'required|unique:mahasiswas',
-            'nama' => 'required',
-            'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
-            'alamat' => 'required',
-            'kota_id' => 'required',
-            'prodi_id' => 'required',
-            'url_foto' => 'required|file|mimes:png,jpg|max:5000'
-        ]);
-
-
-        $ext = $request->url_foto->getClientOriginalExtension();
-        $val['url_foto'] = $request -> npm. "." .$ext;
-
-        // upload file
-        $request->url_foto->move('foto' ,$val['url_foto']);
-
-        Mahasiswa::create($val);
+        if($request->hasFile('url_foto')){
+            File::delete('foto/' . $mahasiswa['url_foto']);
+            $val = $request->validate([
+                'npm' => 'required',
+                'nama' => 'required',
+                'tempat_lahir' => 'required',
+                'tanggal_lahir' => 'required',
+                'alamat' => 'required',
+                'kota_id' => 'required',
+                'prodi_id' => 'required',
+                'url_foto' => 'required|file|mimes:png,jpg|max:5000'
+            ]);
+            $ext = $request->url_foto->getClientOriginalExtension();
+            $val['url_foto'] = $request -> npm. "." .$ext;
+            // upload file
+            $request->url_foto->move('foto' ,$val['url_foto']);
+        }else{
+            $val = $request->validate([
+                'npm' => 'required',
+                'nama' => 'required',
+                'tempat_lahir' => 'required',
+                'tanggal_lahir' => 'required',
+                'alamat' => 'required',
+                'kota_id' => 'required',
+                'prodi_id' => 'required'
+            ]);
+        }
+        $mahasiswa->update($val);
         return redirect()->route('mahasiswa.index') ->with('success', $val['nama'].'berhasil disimpan');
 
     }

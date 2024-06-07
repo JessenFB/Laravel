@@ -52,7 +52,7 @@
     <script>
       Swal.fire({
      title: "Good job!",
-     text: "{{session ('success')}}",
+     text: "{{session (' success ')}}",
      icon: "success"
    });
    </script>
