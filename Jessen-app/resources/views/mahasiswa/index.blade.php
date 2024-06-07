@@ -31,7 +31,8 @@
                         <td class="text-center">{{ $item['prodi'] ['nama'] }}</td>
                         <td class="text-center" ><img src="{{url('foto/'.$item['url_foto'])}}" alt=""></td>
                         <td> <a href="{{route('mahasiswa.show',$item ['id'])}}" class="btn btn-sm btn-dark btn-rounded">Show</a></td>
-                        <td><form action="{{route('mahasiswa.destroy', $item->id)}}" method="post">
+                        <td> <a href="{{route('mahasiswa.edit',$item ['id'])}}" class="btn btn-sm btn-dark btn-rounded">Edit</a></td>
+                        <td><form action="{{route('mahasiswa.destroy', $item->id)}}" method="post" style="display: inline">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-sm btn-dark btn-rounded btn-danger btn-flat show_confirm"
