@@ -27,10 +27,10 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('fakultas', FakultasController::class);
-Route::resource('prodi', ProdiController::class);
+Route::resource('fakultas', FakultasController::class)->middleware(['auth', 'verified']);
+Route::resource('prodi', ProdiController::class)->middleware(['auth', 'verified']);
 Route::resource('kota', KotaController::class);
-Route::resource('mahasiswa', MahasiswaController::class);
+Route::resource('mahasiswa', MahasiswaController::class)->middleware(['auth', 'verified']);
 Route::get('dashboard', ([DashboardController::class,'index']))->name('dashboard')->middleware(['auth', 'verified']);
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
