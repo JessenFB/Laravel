@@ -8,9 +8,16 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function index(){
-        $prodi = DB::select("SELECT prodis.nama ,COUNT(*) AS jumlah FROM mahasiswas 
+        $mahasiswaprodi = DB::select("SELECT prodis.nama ,COUNT(*) AS jumlah FROM mahasiswas 
         JOIN prodis on prodis.id = mahasiswas.prodi_id GROUP BY prodis.nama");
+
+        $mahasiswajk = DB::select("SELECT
+        prodis.nama,SUM(CASE WHEN mahasiswas.jk='L' THEN 1 else 0 END) laki,
+        SUM(CASE WHEN mahasiswas.jk='P' THEN 1 else 0 END)perempuan
+        FROM mahasiswas
+        JOIN prodis ON mahasiswas.prodi_id = prodis.id GROUP BY prodis.nama");
         
-        return view('dashboard') ->with('mahasiswaprodi', $prodi);
+        return view('dashboard') ->with('mahasiswaprodi', $mahasiswaprodi)
+        ->with('mahasiswajk', $mahasiswajk);
     }
 }

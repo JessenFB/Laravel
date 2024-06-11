@@ -45,6 +45,13 @@
                 @enderror <br>
               </div>
               <div class="form-group">
+                <label for="tempat_lahir">Jenis Kelamin</label>
+                <input type="text" name="jk" id="" value="{{ old('jk') ? old('jk') : $mahasiswa['jk']}}" class="form-control" >
+                @error('jk')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror <br>
+              </div>
+              <div class="form-group">
                 <label for="alamat">Alamat</label>
                 <input type="text" name="alamat" id="" value="{{ old('alamat') ? old('alamat') : $mahasiswa['alamat'] }}" class="form-control" >
                 <div class="form-group">

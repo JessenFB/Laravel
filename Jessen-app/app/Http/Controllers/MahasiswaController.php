@@ -49,6 +49,7 @@ class MahasiswaController extends Controller
             'alamat' => 'required',
             'kota_id' => 'required',
             'prodi_id' => 'required',
+            'jk' => 'required',
             'url_foto' => 'required|file|mimes:png,jpg|max:5000'
         ]);
 

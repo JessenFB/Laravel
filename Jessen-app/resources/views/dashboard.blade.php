@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', 'Dadboard')
+@section('title', 'Dashboard')
 @section('content')
 
 <div class="row">
@@ -13,14 +13,17 @@
 
         <figure class="highcharts-figure">
         <div id="container"></div>
-        <p class="highcharts-description">
+        {{-- <p class="highcharts-description">
         A basic column chart comparing estimated corn and wheat production
         in some countries.
 
         The chart is making use of the axis crosshair feature, to highlight
         the hovered country.
-        </p>
+        </p> --}}
         </figure>
+        <figure class="highcharts-figure">
+            <div id="container-jk"></div>
+            </figure>
 
 
         {{-- (css) --}}
@@ -94,9 +97,6 @@
                     @foreach($mahasiswaprodi as $item)
                     '{{$item->nama}}',
                     @endforeach
-                    @foreach($mahasiswaprodi as $item)
-                    '{{$item->nama}}',
-                    @endforeach
                 ],
                 crosshair: true,
                 accessibility: {
@@ -124,7 +124,67 @@
                     data: [
                     @foreach($mahasiswaprodi as $item)
                     {{$item->jumlah}},
-                    {{$item->jumlah}},
+                    @endforeach
+                   
+                    ]
+                }
+            ]
+        });
+
+        Highcharts.chart('container-jk', {
+                chart: {
+                    type: 'column'
+            },
+            title: {
+                text: 'Suicide count for 2020',
+                align: 'left'
+            },
+            subtitle: {
+                text:
+                'Source: https://www.worldometers.info/ ',
+                    align: 'left'
+                },
+                xAxis: {
+                categories: [
+                    @foreach($mahasiswajk as $item)
+                    '{{$item->nama}}',
+                    @endforeach
+                ],
+                crosshair: true,
+                accessibility: {
+                    description: 'Program Studi'
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Mahasiswa'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' (1000 MT)'
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [
+                {
+                    name: 'Laki-Laki',
+                    data: [
+                    @foreach($mahasiswajk as $item)
+                    {{$item->laki}},
+                    @endforeach
+                   
+                    ]
+                },
+                {
+                    name: 'Perempuan',
+                    data: [
+                    @foreach($mahasiswajk as $item)
+                    {{$item->perempuan}},
                     @endforeach
                    
                     ]
@@ -137,5 +197,6 @@
 
         
     </div>
-</div>
-    @endsection
+
+    </div>
+        @endsection
