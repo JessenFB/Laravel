@@ -192,11 +192,5 @@
             ]
         });
         </script>
-        
-        
-
-        
-    </div>
-
-    </div>
         @endsection
+    </div>
