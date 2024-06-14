@@ -38,6 +38,11 @@ class FakultasController extends Controller
     public function store(Request $request)
     {
         // dd($request);
+
+        if ($request->user()->cannot ('create',Fakultas::class)){
+            abort(403,'Anda Tidak Memiliki Akses');
+        }
+
         $val = $request->validate([
             'nama' => 'required|unique:fakultas',
             'singkatan'=>'required'

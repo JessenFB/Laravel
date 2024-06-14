@@ -31,6 +31,11 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
+
+        if ($request->user()->cannot ('create',Prodi::class)){
+            abort(403,'Anda Tidak Memiliki Akses');
+        }
+
         $val = $request->validate([
             'nama' => 'required|unique:prodis',
             'fakultas_id' => 'required'

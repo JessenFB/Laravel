@@ -14,7 +14,9 @@
             <p class="card-description">
               List Data Fakultas
             </p>
+            @can('create',App\models\Fakultas::class)
             <a href="{{url('fakultas/create')}}" class="btn btn-dark btn-rounded btn-fw">Tambah</a>
+            @endcan
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>

@@ -39,6 +39,11 @@ class MahasiswaController extends Controller
     {
         
         // dd($request);
+        
+        if ($request->user()->cannot ('create',Prodi::class)){
+            abort(403,'Anda Tidak Memiliki Akses');
+        }
+
 
         $val = $request->validate([
 

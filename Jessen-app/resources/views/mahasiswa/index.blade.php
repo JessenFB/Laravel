@@ -10,7 +10,9 @@
             <p class="card-description">
             List Data Mahasiswa
             </p>
+            @can('create',App\models\Mahasiswa::class)
             <a href="{{ url('mahasiswa/create') }}" class="btn btn-primary btn-rounded btn-fw">Tambah</a>
+            @endcan
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
@@ -31,13 +33,17 @@
                         <td class="text-center">{{ $item['prodi'] ['nama'] }}</td>
                         <td class="text-center" ><img src="{{url('foto/'.$item['url_foto'])}}" alt=""></td>
                         <td> <a href="{{route('mahasiswa.show',$item ['id'])}}" class="btn btn-sm btn-dark btn-rounded">Show</a></td>
+                        @can('update',App\models\Mahasiswa::class)
                         <td> <a href="{{route('mahasiswa.edit',$item ['id'])}}" class="btn btn-sm btn-dark btn-rounded">Edit</a></td>
+                        @endcan
+                        @can('delete',App\models\Mahasiswa::class)
                         <td><form action="{{route('mahasiswa.destroy', $item->id)}}" method="post" style="display: inline">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-sm btn-dark btn-rounded btn-danger btn-flat show_confirm"
                           data-toggle ="tooltip" data-nama = "{{$item['nama']}}" title="Hapus">Hapus</button>
                         </form></td>
+                        @endcan
                     </tr>
                     @endforeach
                 </tbody>

@@ -10,7 +10,9 @@
             <p class="card-description">
               List Data Program Studi
             </p>
+            @can('create',App\models\Prodi::class)
             <a href="{{url('prodi/create')}}" class="btn btn-dark btn-rounded btn-fw">Tambah</a>
+            @endcan
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
