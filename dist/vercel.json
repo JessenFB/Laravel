@@ -26,10 +26,6 @@
             "dest": "/public/vendor/"
         },
         {
-            "src": "/vendors/(.*)",
-            "dest": "/public/vendors/"
-        },
-        {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
