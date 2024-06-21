@@ -14,6 +14,10 @@
             "dest": "/public/css/"
         },
         {
+            "src": "/foto/(.*)",
+            "dest": "/public/foto/"
+        },
+        {
             "src": "/images/(.*)",
             "dest": "/public/images/"
         },
